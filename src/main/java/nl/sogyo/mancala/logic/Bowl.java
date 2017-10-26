@@ -7,25 +7,52 @@ package nl.sogyo.mancala.logic;
  * Created by kverlaan
  * on 25-Oct-17
  */
-public class Bowl extends BeadContainer{
+public class Bowl extends BeadContainer {
     
-    private int beads;
-    private BeadContainer neighbour;
-    
-
+    private Player owner; //should be final (when constructor is ready)
+    private Bowl   neighbour; //should be final (when constructor is ready)
+    private int    beads;
+    private int    available;
     
     public Bowl() {
-        beads = 4;
+        
+        this(14);
     }
     
-   
+    public Bowl constructBowl(){
+        
+    }
+    
+    private Bowl(int available) {
+        
+        beads = 4;
+        new Bowl(this, --available);
+    }
+    
+    private Bowl(Bowl neighbour, int available) {
+        
+        if (available > 0) {
+            beads = 4;
+            owner = new Player();
+            this.neighbour = neighbour;
+            new Bowl(this, --available);
+        } else
+            throw new IllegalArgumentException();
+    }
+    
+    public Player getOwner() {
+        
+        return owner;
+    }
+    
     public int getBeads() {
         
         return beads;
     }
     
-    public BeadContainer getNeighbour() {
+    public Bowl getNeighbour() {
         
-        return new Bowl();
+        return neighbour;
     }
+    
 }

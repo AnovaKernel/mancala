@@ -1,12 +1,12 @@
 package nl.sogyo.mancala;
 
-
+import nl.sogyo.mancala.logic.Bowl;
 
 public class Mancala {
     
-    public Mancala() {
+    Mancala() {
         
-        //Player player1, player2;
+        new Bowl();
         
     }
     

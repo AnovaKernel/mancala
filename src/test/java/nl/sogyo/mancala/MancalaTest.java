@@ -1,32 +1,22 @@
 package nl.sogyo.mancala;
 
 import nl.sogyo.mancala.logic.Bowl;
+import nl.sogyo.mancala.logic.Kalaha;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class MancalaTest {
     
-    @Test
-    public void testBowl() {
-        
-        Bowl bowl = new Bowl();
-        Assert.assertEquals(4, bowl.getBeads());
-        
-    }
+
+    
+
     
     @Test
-    public void testBowlHasNeighbour() {
+    public void testMancalaCreation() {
         
-        Bowl bowl = new Bowl();
-        Assert.assertNotNull(bowl.getNeighbour());
+        Mancala m = new Mancala();
+        Assert.assertNotNull(m);
         
-    }
-    
-    @Test
-    public void testFirstMove() {
-        
-        Bowl bowl = new Bowl();
-        bowl.transferBeadsOnPlayerMove(bowl.getBeads());
         
     }
     

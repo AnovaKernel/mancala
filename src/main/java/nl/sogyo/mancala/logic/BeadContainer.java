@@ -1,5 +1,7 @@
 package nl.sogyo.mancala.logic;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * Project: mancala
  * FQCN: nl.sogyo.mancala.logic.BeadContainer
@@ -13,7 +15,18 @@ abstract class BeadContainer {
     private BeadContainer neighbour;
     private Player owner;
     
-    public void transferBeadsOnPlayerMove(int beads) {
+    
+    
+    public BeadContainer() {
+    
+
         
     }
+    
+    public abstract Player getOwner();
+    
+    public abstract int getBeads() ;
+    
+    public abstract BeadContainer getNeighbour();
+
 }
