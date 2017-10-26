@@ -46,12 +46,18 @@ public class BowlTest {
         
     }
     
+//    @Test
+//    public void testBowlCannotBeInstantiatedTwice() {
+//
+//        Bowl b1 = new Bowl();
+//        Bowl b2 = new Bowl();
+//        Assert.assertNull(b2);
+//
+//    }
+
     @Test
-    public void testBowlCannotBeInstantiatedTwice() {
-        
-        Bowl b1 = new Bowl();
-        Bowl b2 = new Bowl();
-        Assert.assertEquals(b1, b2);
-        
+    public void testBowlHasOppositeBowl() {
+        Bowl b = new Bowl();
+        Assert.assertNotNull(b.getOpposite());
     }
 }

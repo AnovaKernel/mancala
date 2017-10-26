@@ -9,36 +9,30 @@ package nl.sogyo.mancala.logic;
  */
 public class Bowl extends BeadContainer {
     
-    private Player owner; //should be final (when constructor is ready)
-    private Bowl   neighbour; //should be final (when constructor is ready)
-    private int    beads;
-    private int    available;
+    private Player        owner; //should be final (when constructor is ready)
+    private BeadContainer neighbour; //should be final (when constructor is ready)
+    private int           beads;
     
     public Bowl() {
         
         this(14);
     }
     
-    public Bowl constructBowl(){
-        
-    }
-    
-    private Bowl(int available) {
+    Bowl(int available) {
         
         beads = 4;
-        new Bowl(this, --available);
+        owner = new Player();
+        if (available == 8 || available == 1)
+            neighbour = new Kalaha(--available);
+        else
+            neighbour = new Bowl(--available);
+        
+        //if available == 0,
+        getOwner();
+        
     }
     
-    private Bowl(Bowl neighbour, int available) {
-        
-        if (available > 0) {
-            beads = 4;
-            owner = new Player();
-            this.neighbour = neighbour;
-            new Bowl(this, --available);
-        } else
-            throw new IllegalArgumentException();
-    }
+
     
     public Player getOwner() {
         
@@ -50,9 +44,14 @@ public class Bowl extends BeadContainer {
         return beads;
     }
     
-    public Bowl getNeighbour() {
+    public BeadContainer getNeighbour() {
         
         return neighbour;
     }
     
+    @Override
+    public BeadContainer getOpposite() {
+        
+        return neighbour.getOpposite().getNeighbour();
+    }
 }

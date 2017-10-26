@@ -7,18 +7,33 @@ package nl.sogyo.mancala.logic;
  * Created by kverlaan
  * on 26-Oct-17
  */
-public class Kalaha {
+public class Kalaha extends BeadContainer {
+    
+    private Player        owner; //should be final (when constructor is ready)
+    private BeadContainer neighbour; //should be final (when constructor is ready)
+    private int           beads;
     
     public Kalaha() {
+        
         this(2);
     }
-    private Kalaha(int available) {
-        if (available > 0)
-            new Kalaha(--available);
+    
+    Kalaha(int available) {
         
-        else
-            throw new IllegalStateException();
+        beads = 4;
+        owner = new Player();
+        if (available > 8)
+            neighbour = new Bowl(--available);
+        else if (available == 8 || available == 1)
+            neighbour = new Kalaha(--available);
+        else if (available > 1 && available < 8)
+            neighbour = new Bowl(--available);
+        
     }
     
-
+    @Override
+    public BeadContainer getOpposite() {
+        
+        return this;
+    }
 }

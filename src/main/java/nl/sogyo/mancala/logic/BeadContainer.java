@@ -17,16 +17,24 @@ abstract class BeadContainer {
     
     
     
-    public BeadContainer() {
     
-
+    public Player getOwner() {
         
+        return owner;
     }
     
-    public abstract Player getOwner();
+    public int getBeads() {
+        
+        return beads;
+    }
     
-    public abstract int getBeads() ;
+    public BeadContainer getNeighbour() {
+        
+        return neighbour;
+    }
     
-    public abstract BeadContainer getNeighbour();
+    public BeadContainer getOpposite(){
+        return neighbour.getOpposite().getNeighbour();
+    }
 
 }

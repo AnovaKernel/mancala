@@ -16,7 +16,18 @@ public class KalahaTest {
     public void testKalahaExists() {
         
         Kalaha kalaha = new Kalaha();
+        //Kalaha kalaha = (Kalaha)null;
         Assert.assertNotNull(kalaha);
+        
+    }
+    
+    @Test
+    public void testKalahaHasNeighbour() {
+        
+        
+        Kalaha kalaha = new Kalaha();
+        //Kalaha kalaha = (Kalaha)null;
+        Assert.assertNotNull(kalaha.getNeighbour());
         
     }
     
