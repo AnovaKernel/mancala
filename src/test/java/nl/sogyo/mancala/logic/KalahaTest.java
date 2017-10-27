@@ -15,19 +15,19 @@ public class KalahaTest {
     @Test
     public void testKalahaExists() {
         
-        Kalaha kalaha = new Kalaha();
-        //Kalaha kalaha = (Kalaha)null;
-        Assert.assertNotNull(kalaha);
+        Bowl   b = new Bowl();
+        Kalaha k = (Kalaha) b.getNeighbour(6);
+        Assert.assertNotNull(k);
         
     }
     
     @Test
     public void testKalahaHasNeighbour() {
         
+        Bowl   b = new Bowl();
+        Kalaha k = (Kalaha) b.getNeighbour(6);
         
-        Kalaha kalaha = new Kalaha();
-        //Kalaha kalaha = (Kalaha)null;
-        Assert.assertNotNull(kalaha.getNeighbour());
+        Assert.assertNotNull(k.getNeighbour());
         
     }
     

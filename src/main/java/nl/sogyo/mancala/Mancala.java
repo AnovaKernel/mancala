@@ -9,7 +9,10 @@ public class Mancala {
     public static void main(String[] args) {
     
     
-        new Bowl().getOpposite();
+        Bowl keepIt = new Bowl();
+       
+    
+        System.out.println("pause here!");
 
         
     }

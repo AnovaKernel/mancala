@@ -9,26 +9,18 @@ package nl.sogyo.mancala.logic;
  */
 public class Kalaha extends BeadContainer {
     
-    private Player        owner; //should be final (when constructor is ready)
-    private BeadContainer neighbour; //should be final (when constructor is ready)
-    private int           beads;
-    
-    public Kalaha() {
-        
-        this(2);
-    }
-    
-    Kalaha(int available) {
+    Kalaha(BeadContainer bc, int containersCreated) {
         
         beads = 4;
         owner = new Player();
-        if (available > 8)
-            neighbour = new Bowl(--available);
-        else if (available == 8 || available == 1)
-            neighbour = new Kalaha(--available);
-        else if (available > 1 && available < 8)
-            neighbour = new Bowl(--available);
+        this.neighbour = bc;
         
+        if (containersCreated == 1 || containersCreated == 8)
+            new Kalaha(this, ++containersCreated);
+        else if (containersCreated <= 13)
+            new Bowl(this, ++containersCreated);
+        else
+            getNeighbour(13).setNeighbour(this);
     }
     
     @Override

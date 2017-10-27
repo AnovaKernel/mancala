@@ -20,4 +20,24 @@ public class PlayerTest {
         
     }
     
+    @Test
+    public void testPlayerHasOpponent() {
+        Player p = new Player();
+        Assert.assertNotNull(p.getOpponent());
+    }
+    
+    
+    @Test
+    public void testPlayerIsOpponentsOpponent() {
+        Player p = new Player();
+        Assert.assertEquals(p,p.getOpponent().getOpponent());
+    }
+    
+    @Test
+    public void testOnePlayerHasTurn() {
+        Player p = new Player();
+        Assert.assertTrue(p.isTurn() != p.getOpponent().isTurn());
+        
+
+    }
 }

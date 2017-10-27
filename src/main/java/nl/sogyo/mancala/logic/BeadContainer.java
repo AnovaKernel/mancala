@@ -1,7 +1,5 @@
 package nl.sogyo.mancala.logic;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
 /**
  * Project: mancala
  * FQCN: nl.sogyo.mancala.logic.BeadContainer
@@ -11,30 +9,41 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 abstract class BeadContainer {
     
-    private int beads;
-    private BeadContainer neighbour;
-    private Player owner;
+    int           beads;
+    BeadContainer neighbour;
+    Player        owner;
     
+    BeadContainer getNeighbour(int x) {
+        
+        if (x == 1)
+            return neighbour;
+        else
+            return neighbour.getNeighbour(--x);
+    }
     
-    
-    
-    public Player getOwner() {
+    Player getOwner() {
         
         return owner;
     }
     
-    public int getBeads() {
+    int getBeads() {
         
         return beads;
     }
     
-    public BeadContainer getNeighbour() {
+    BeadContainer getNeighbour() {
         
         return neighbour;
     }
     
-    public BeadContainer getOpposite(){
-        return neighbour.getOpposite().getNeighbour();
+    void setNeighbour(BeadContainer neighbour) {
+        
+        this.neighbour = neighbour;
     }
-
+    
+    public BeadContainer getOpposite() {
+        
+        return getNeighbour().getOpposite().getNeighbour();
+    }
+    
 }

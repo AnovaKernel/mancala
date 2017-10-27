@@ -7,14 +7,37 @@ package nl.sogyo.mancala.logic;
  * Created by kverlaan
  * on 25-Oct-17
  */
-public class Player {
+class Player {
     
     private boolean turn;
+    private Player  opponent;
     
-    public Player() {
-        //DEFAULT NOARGS CONSTRUCTOR
+    Player() {
+        
+        opponent = new Player(this);
+        setTurn(true);
     }
     
-
+    private Player(Player player) {
+        
+        opponent = player;
+    }
+    
+    boolean isTurn() {
+        
+        return turn;
+    }
+    
+    private void setTurn(boolean turn) {
+        
+        this.turn = turn;
+        if (opponent.isTurn() == turn)
+            opponent.setTurn(!turn);
+    }
+    
+    Player getOpponent() {
+        
+        return opponent;
+    }
     
 }
