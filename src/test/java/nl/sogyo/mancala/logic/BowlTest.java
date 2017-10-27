@@ -53,6 +53,13 @@ public class BowlTest {
     }
     
     @Test
+    public void testOppositeOppositeIsSameBowl() {
+        
+        Bowl b = new Bowl();
+        Assert.assertEquals(b, b.getOpposite().getOpposite());
+    }
+    
+    @Test
     public void testGameCanLoopAround() {
         
         Bowl b1 = new Bowl();
@@ -60,5 +67,30 @@ public class BowlTest {
         Assert.assertEquals(b1, b2);
     }
     
+    @Test
+    public void testBowlCanPlay(){
+        Bowl b = new Bowl();
+        b.play(1);
+        Assert.assertEquals(0,b.getBeads());
+        Assert.assertEquals(5,b.getNeighbour().getBeads());
+        Assert.assertEquals(5,b.getNeighbour(4).getBeads());
+    }
+    
+    @Test
+    public void testTurnSwitchesAfterPlay() {
+        Bowl b = new Bowl();
+        Player p = b.getOwner();
+        b.play(1);
+        Assert.assertFalse(p.isTurn());
+        
+    }
+    
+    @Test
+    public void testOpponentBowlCanNotPlay(){
+        Bowl b = (Bowl) new Bowl().getOpposite();
+        b.play(1);
+        Assert.assertEquals(4,b.getBeads());
+
+    }
     
 }

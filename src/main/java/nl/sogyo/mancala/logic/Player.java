@@ -7,15 +7,15 @@ package nl.sogyo.mancala.logic;
  * Created by kverlaan
  * on 25-Oct-17
  */
-class Player {
+public class Player {
     
     private boolean turn;
     private Player  opponent;
     
-    Player() {
+    public Player() {
         
         opponent = new Player(this);
-        setTurn(true);
+        setTurn();
     }
     
     private Player(Player player) {
@@ -23,16 +23,17 @@ class Player {
         opponent = player;
     }
     
+    void setTurn() {
+        
+        turn = !turn;
+        if (opponent.isTurn() == turn)
+            opponent.setTurn();
+        
+    }
+    
     boolean isTurn() {
         
         return turn;
-    }
-    
-    private void setTurn(boolean turn) {
-        
-        this.turn = turn;
-        if (opponent.isTurn() == turn)
-            opponent.setTurn(!turn);
     }
     
     Player getOpponent() {

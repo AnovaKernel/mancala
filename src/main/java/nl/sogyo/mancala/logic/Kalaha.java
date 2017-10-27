@@ -9,16 +9,16 @@ package nl.sogyo.mancala.logic;
  */
 public class Kalaha extends BeadContainer {
     
-    Kalaha(BeadContainer bc, int containersCreated) {
+    Kalaha(BeadContainer bc, int containersCreated, Player owner) {
         
         beads = 4;
-        owner = new Player();
+        this.owner = owner;
         this.neighbour = bc;
         
         if (containersCreated == 1 || containersCreated == 8)
-            new Kalaha(this, ++containersCreated);
+            new Kalaha(this, ++containersCreated, owner.getOpponent());
         else if (containersCreated <= 13)
-            new Bowl(this, ++containersCreated);
+            new Bowl(this, ++containersCreated, owner);
         else
             getNeighbour(13).setNeighbour(this);
     }
@@ -28,4 +28,6 @@ public class Kalaha extends BeadContainer {
         
         return this;
     }
+    
+
 }

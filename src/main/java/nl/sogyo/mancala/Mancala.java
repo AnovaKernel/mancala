@@ -1,6 +1,7 @@
 package nl.sogyo.mancala;
 
 import nl.sogyo.mancala.logic.Bowl;
+import nl.sogyo.mancala.logic.Player;
 
 public class Mancala {
     
@@ -10,6 +11,7 @@ public class Mancala {
     
     
         Bowl keepIt = new Bowl();
+        Player playerOne = new Player();
        
     
         System.out.println("pause here!");
