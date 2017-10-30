@@ -1,5 +1,7 @@
 package nl.sogyo.mancala.logic;
 
+import nl.sogyo.mancala.presentation.BoardObject;
+
 /**
  * Project: mancala
  * FQCN: nl.sogyo.mancala.logic.BeadContainer
@@ -7,15 +9,17 @@ package nl.sogyo.mancala.logic;
  * Created by kverlaan
  * on 25-Oct-17
  */
-public abstract class BeadContainer {
+public abstract class BeadContainer extends BoardObject {
     
     int           beads;
     BeadContainer neighbour;
     Player        owner;
     
     public BeadContainer getNeighbour(int x) {
-        
-        if (x == 1)
+
+        if (x == 0)
+            return this;
+        else if (x == 1)
             return neighbour;
         else
             return neighbour.getNeighbour(--x);
@@ -59,7 +63,7 @@ public abstract class BeadContainer {
             getNeighbour().play(--i);
     }
     
-    void play() {
+    public void play() {
         
         System.out.println("You can only play on a Bowl");
     }
