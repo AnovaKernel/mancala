@@ -21,32 +21,37 @@ public abstract class BeadContainer {
             return neighbour.getNeighbour(--x);
     }
     
-    public void transferBeadsOnGameEnd(int beads) {}
+    public void transferBeadsOnGameEnd(int beads) {
+        
+        beads = getBeads() + beads;
+        setBeads(0);
+        getNeighbour().transferBeadsOnGameEnd(beads);
+    }
     
-    public void transferBeadsOnStrike(int beads)  {}
+    public void transferBeadsOnStrike(int beads) {}
     
     void transferBeadsOnPlayerMove(int beads) {
         
         if (beads > 1) {
             setBeads(getBeads() + 1);
             getNeighbour().transferBeadsOnPlayerMove(--beads);
-        } else if (beads == 1) {
-            if (getBeads() == 0) {
-                getOpposite().strike();
-                transferBeadsOnStrike(beads);
-                //setBeads(0);
-            } else
-                setBeads(getBeads() + 1);
-        }
+        } else if (beads == 1 && getOwner().isTurn() && getBeads() == 0) {
+            
+            getOpposite().strike();
+            transferBeadsOnStrike(beads);
+            //setBeads(0);
+        } else
+            setBeads(getBeads() + 1);
+        
     }
     
     public void strike() {
-    
+        
         System.out.println("Strike can not be called on a Kalaha");
         
     }
     
-    void play(int i) {
+    public void play(int i) {
         
         if (i == 1)
             play();
@@ -59,7 +64,7 @@ public abstract class BeadContainer {
         System.out.println("You can only play on a Bowl");
     }
     
-    Kalaha searchKalaha(int i) {
+    private Kalaha searchKalaha(int i) {
         
         Kalaha k;
         k = getNeighbour(i) instanceof Kalaha ? ((Kalaha) getNeighbour(i)) : searchKalaha(++i);
@@ -97,11 +102,8 @@ public abstract class BeadContainer {
     }
     
     public boolean isMovePossible() {
-        
-        if (getOwner().isTurn() && getBeads() > 0)
-            return true;
-        else
-            return getNeighbour().isMovePossible();
+    
+        return getOwner().isTurn() && getBeads() > 0 || getNeighbour().isMovePossible();
     }
     
     public Kalaha getKalaha() {

@@ -44,13 +44,19 @@ public class Kalaha extends BeadContainer {
     
     @Override
     public boolean isMovePossible() {
-        
-        return false;
+//        transferBeadsOnGameEnd();
+        return false; //this means the game has ended!
     }
     
     @Override
     public BeadContainer getOpposite() {
         
         return this;
+    }
+    
+    @Override
+    public void transferBeadsOnGameEnd(final int beads) {
+        
+        setBeads(beads);
     }
 }
