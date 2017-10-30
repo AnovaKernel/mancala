@@ -7,13 +7,13 @@ package nl.sogyo.mancala.logic;
  * Created by kverlaan
  * on 25-Oct-17
  */
-abstract class BeadContainer {
+public abstract class BeadContainer {
     
     int           beads;
     BeadContainer neighbour;
     Player        owner;
     
-    BeadContainer getNeighbour(int x) {
+    public BeadContainer getNeighbour(int x) {
         
         if (x == 1)
             return neighbour;
@@ -27,10 +27,23 @@ abstract class BeadContainer {
     
     void transferBeadsOnPlayerMove(int beads) {
         
-        if (beads > 0) {
+        if (beads > 1) {
             setBeads(getBeads() + 1);
             getNeighbour().transferBeadsOnPlayerMove(--beads);
+        } else if (beads == 1) {
+            if (getBeads() == 0) {
+                getOpposite().strike();
+                transferBeadsOnStrike(beads);
+                //setBeads(0);
+            } else
+                setBeads(getBeads() + 1);
         }
+    }
+    
+    public void strike() {
+    
+        System.out.println("Strike can not be called on a Kalaha");
+        
     }
     
     void play(int i) {
@@ -58,7 +71,7 @@ abstract class BeadContainer {
         return owner;
     }
     
-    int getBeads() {
+    public int getBeads() {
         
         return beads;
     }
@@ -85,10 +98,13 @@ abstract class BeadContainer {
     
     public boolean isMovePossible() {
         
-        return true;
+        if (getOwner().isTurn() && getBeads() > 0)
+            return true;
+        else
+            return getNeighbour().isMovePossible();
     }
     
-    Kalaha getKalaha() {
+    public Kalaha getKalaha() {
         
         return searchKalaha(1);
         

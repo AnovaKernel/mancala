@@ -11,7 +11,7 @@ public class Kalaha extends BeadContainer {
     
     Kalaha(BeadContainer bc, int containersCreated, Player owner) {
         
-        beads = 4;
+        beads = 0;
         this.owner = owner;
         this.neighbour = bc;
         
@@ -24,10 +24,33 @@ public class Kalaha extends BeadContainer {
     }
     
     @Override
+    void transferBeadsOnPlayerMove(int beads) {
+        
+        if (getOwner().isTurn() && beads > 1) {
+            setBeads(getBeads() + 1);
+            getNeighbour().transferBeadsOnPlayerMove(--beads);
+        } else if (getOwner().isTurn() && beads==1) {
+            setBeads(getBeads() + 1);
+        } else
+            getNeighbour().transferBeadsOnPlayerMove(beads);
+        
+    }
+    
+    @Override
+    public void transferBeadsOnStrike(final int beads) {
+        
+        setBeads(getBeads()+beads);
+    }
+    
+    @Override
+    public boolean isMovePossible() {
+        
+        return false;
+    }
+    
+    @Override
     public BeadContainer getOpposite() {
         
         return this;
     }
-    
-
 }

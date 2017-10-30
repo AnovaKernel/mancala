@@ -33,19 +33,30 @@ public class KalahaTest {
     
     @Test
     public void testTwoKalahaExist() {
-        Bowl b = new Bowl();
-        Kalaha k1 =  (Kalaha)b.getNeighbour(6);
-        Kalaha k2 =  (Kalaha)k1.getNeighbour(7);
+        
+        Bowl   b  = new Bowl();
+        Kalaha k1 = (Kalaha) b.getNeighbour(6);
+        Kalaha k2 = (Kalaha) k1.getNeighbour(7);
         
         Assert.assertNotNull(k1);
         Assert.assertNotNull(k2);
     }
     
-@Test
-    public void testReturnedKalahaBelongsToRightOwner(){
+    @Test
+    public void testReturnedKalahaBelongsToRightOwner() {
+        
+        Bowl   b = new Bowl();
+        Kalaha k = b.getKalaha();
+        Assert.assertEquals(b.getOwner(), k.getOwner());
+    }
+    
+    @Test
+    public void testKalahaCanNotBePlayed() {
+        
         Bowl b = new Bowl();
-        Kalaha k =b.getKalaha();
-        Assert.assertEquals(b.getOwner(),k.getOwner());
-}
+        b.getKalaha().play();
+        Assert.assertTrue(b.getOwner().isTurn());
+        
+    }
     
 }
