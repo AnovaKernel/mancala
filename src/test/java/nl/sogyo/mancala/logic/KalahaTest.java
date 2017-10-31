@@ -59,4 +59,20 @@ public class KalahaTest {
         
     }
     
+    @Test
+    public void testKalahaContainsAllBeadsOnGameEnd() {
+        
+        Bowl b = new Bowl();
+        //arbitrary amount of plays
+        b.play(2);
+        b.play(9);
+        
+        b.getKalaha().getNeighbour().transferBeadsOnGameEnd(0);
+        b.transferBeadsOnGameEnd(0);
+        
+        Assert.assertEquals(48, b.getKalaha().getBeads() + b.getOpposite().getKalaha().getBeads());
+        
+    }
+    
+    
 }

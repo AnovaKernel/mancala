@@ -84,6 +84,9 @@ public class BowlTest {
         Player p = b.getOwner();
         b.play(1);
         Assert.assertFalse(p.isTurn());
+        b.play(8);
+        b.play(2);
+        Assert.assertTrue(p.isTurn());
         
     }
     
@@ -100,20 +103,15 @@ public class BowlTest {
     public void testBeadsDontGoInOpponentsKalaha() {
         
         Bowl b = new Bowl();
-        b.play(1); //p1
+        b.play(2); //p1
         Assert.assertFalse(b.getOwner().isTurn());
         b.play(8); //p2
         Assert.assertTrue(b.getOwner().isTurn());
-        b.play(2); //p1
         b.play(3); //p1
         Assert.assertFalse(b.getOwner().isTurn());
-        b.play(9); //p2 (ends in kalaha)
+        b.play(8); //p2 (ends in kalaha)
         Assert.assertTrue(b.getOwner().isTurn());
         b.play(4); //p1
-        Assert.assertFalse(b.getOwner().isTurn());
-        b.play(8); //p2
-        Assert.assertTrue(b.getOwner().isTurn());
-        b.play(6); //p1
         Assert.assertFalse(b.getOwner().isTurn());
         b.play(8); //p2
         Assert.assertTrue(b.getOwner().isTurn());
@@ -121,8 +119,9 @@ public class BowlTest {
         Assert.assertFalse(b.getOwner().isTurn());
         b.play(8); //p2
         Assert.assertTrue(b.getOwner().isTurn());
+        Assert.assertEquals(4, b.getBeads());
         b.play(6); //p1 should end up in 1
-        Assert.assertEquals(1, b.getBeads());
+        Assert.assertEquals(5, b.getBeads());
         
     }
     

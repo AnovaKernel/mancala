@@ -11,6 +11,7 @@ public class Player {
     
     private boolean turn;
     private Player  opponent;
+    private RESULT  playerResult;
     
     public Player() {
         
@@ -31,14 +32,43 @@ public class Player {
         
     }
     
+    RESULT getPlayerResult() {
+        
+        return playerResult;
+    }
+    
+    void setPlayerResult(final int comparedScore) {
+        
+        if (comparedScore < 0) {
+            playerResult = (RESULT.LOSE);
+            getOpponent().setPlayerResult(RESULT.WIN);
+        } else if (comparedScore > 0) {
+            playerResult = (RESULT.WIN);
+            getOpponent().setPlayerResult(RESULT.LOSE);
+        } else {
+            playerResult = (RESULT.DRAW);
+            getOpponent().setPlayerResult(RESULT.DRAW);
+        }
+    }
+    
     boolean isTurn() {
         
         return turn;
     }
     
+    private void setPlayerResult(final RESULT result) {
+        
+        this.playerResult = result;
+        
+    }
+    
     Player getOpponent() {
         
         return opponent;
+    }
+    
+    public enum RESULT {
+        WIN, DRAW, LOSE
     }
     
 }

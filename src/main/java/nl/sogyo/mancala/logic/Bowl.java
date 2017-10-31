@@ -50,20 +50,18 @@ public class Bowl extends BeadContainer {
             int beadsInHand = getBeads();
             setBeads(0);
             getNeighbour().transferBeadsOnPlayerMove(beadsInHand);
-            //find out if we need to flip the turn
+
             if (!(getNeighbour(beadsInHand) instanceof Kalaha)) {
                 //if player did not end in kalaha we flip the turn
                 getOwner().setTurn();
                 
                 if (!getKalaha().getNeighbour().isMovePossible()) {
-                    
                     //if opponent has no moves the game ends
                     getOpposite().getKalaha().getNeighbour().transferBeadsOnGameEnd(0);
-                    
                 }
             }
         } else {
-            if (getBeads() > 0)
+            if (!getOwner().isTurn())
                 System.out.println("Play has been called outside of players turn");
             else
                 System.out.println("No beads in the bowl");

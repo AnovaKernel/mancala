@@ -24,39 +24,44 @@ public class Kalaha extends BeadContainer {
     }
     
     @Override
+    public void transferBeadsOnGameEnd(final int beads) {
+        
+        setBeads(getBeads() + beads);
+        
+        if (getBeads() + getNeighbour().getKalaha().getBeads() == 48) {
+            getOwner().setPlayerResult(getBeads() - getNeighbour().getKalaha().getBeads());
+        } else
+            getNeighbour().transferBeadsOnGameEnd(0);
+    }
+    
+    @Override
+    public void transferBeadsOnStrike(final int beads) {
+        
+        setBeads(getBeads() + beads);
+    }
+    
+    @Override
     void transferBeadsOnPlayerMove(int beads) {
         
         if (getOwner().isTurn() && beads > 1) {
             setBeads(getBeads() + 1);
             getNeighbour().transferBeadsOnPlayerMove(--beads);
-        } else if (getOwner().isTurn() && beads==1) {
-            setBeads(getBeads() + 1);
+        } else if (getOwner().isTurn() && beads == 1) {
+            setBeads(getBeads() + 1); //keep your turn
         } else
             getNeighbour().transferBeadsOnPlayerMove(beads);
         
     }
     
     @Override
-    public void transferBeadsOnStrike(final int beads) {
-        
-        setBeads(getBeads()+beads);
-    }
-    
-    @Override
-    public boolean isMovePossible() {
-//        transferBeadsOnGameEnd();
-        return false; //this means the game has ended!
-    }
-    
-    @Override
     public BeadContainer getOpposite() {
-        
+    
         return this;
     }
     
     @Override
-    public void transferBeadsOnGameEnd(final int beads) {
-        
-        setBeads(beads);
+    public boolean isMovePossible() {
+        //        transferBeadsOnGameEnd();
+        return false; //this means the game has ended!
     }
 }

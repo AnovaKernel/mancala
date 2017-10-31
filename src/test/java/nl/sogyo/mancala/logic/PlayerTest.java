@@ -62,9 +62,32 @@ public class PlayerTest {
     }
     
     @Test
-    public void oppositeBowlBelongsToOpponent() {
+    public void testOppositeBowlBelongsToOpponent() {
         
         Bowl b = new Bowl();
         Assert.assertTrue(b.getOpposite().getOwner().equals(b.getOwner().getOpponent()));
+    }
+    
+    @Test
+    public void testGameCanEndInDraw() {
+        
+        Bowl b = new Bowl();
+        b.transferBeadsOnGameEnd(0);
+        
+        Assert.assertEquals(Player.RESULT.DRAW, b.getOwner().getPlayerResult());
+        Assert.assertEquals(Player.RESULT.DRAW, b.getOwner().getOpponent().getPlayerResult());
+        
+    }
+    
+    @Test
+    public void testGamePlayerCanWinOrLose() {
+        
+        Bowl b = new Bowl();
+        b.play(6);
+        b.transferBeadsOnGameEnd(0);
+        
+        Assert.assertEquals(Player.RESULT.LOSE, b.getOwner().getPlayerResult());
+        Assert.assertEquals(Player.RESULT.WIN, b.getOwner().getOpponent().getPlayerResult());
+        
     }
 }
