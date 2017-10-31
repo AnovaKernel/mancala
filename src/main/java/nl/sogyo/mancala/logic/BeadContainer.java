@@ -32,7 +32,7 @@ public abstract class BeadContainer extends BoardObject {
         getNeighbour().transferBeadsOnGameEnd(beads);
     }
     
-    public void transferBeadsOnStrike(int beads) {}
+    //public abstract void transferBeadsOnStrike(int beads);
     
     void transferBeadsOnPlayerMove(int beads) {
         
@@ -40,10 +40,9 @@ public abstract class BeadContainer extends BoardObject {
             setBeads(getBeads() + 1);
             getNeighbour().transferBeadsOnPlayerMove(--beads);
         } else if (beads == 1 && getOwner().isTurn() && getBeads() == 0) {
-            
             getOpposite().strike();
-            transferBeadsOnStrike(beads);
-            //setBeads(0);
+            getKalaha().transferBeadsOnStrike(beads);
+            setBeads(0);
         } else
             setBeads(getBeads() + 1);
         
@@ -55,7 +54,7 @@ public abstract class BeadContainer extends BoardObject {
         
     }
     
-    public void play(int i) {
+    void play(int i) {
         
         if (i == 1)
             play();
@@ -110,7 +109,7 @@ public abstract class BeadContainer extends BoardObject {
         return getOwner().isTurn() && getBeads() > 0 || getNeighbour().isMovePossible();
     }
     
-    public Kalaha getKalaha() {
+    Kalaha getKalaha() {
         
         return searchKalaha(1);
         

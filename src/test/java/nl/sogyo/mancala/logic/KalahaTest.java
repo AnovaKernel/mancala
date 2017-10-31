@@ -74,5 +74,16 @@ public class KalahaTest {
         
     }
     
-    
+    @Test
+    public void testKalahaReceivesAllBeadsOnStrike() {
+        
+        Bowl b = new Bowl();
+        
+        b.play(5);
+        b.play(8);
+        b.play(1);
+        
+        Assert.assertEquals(8, b.getKalaha().getBeads());
+        
+    }
 }

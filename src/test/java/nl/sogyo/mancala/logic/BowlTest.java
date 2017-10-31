@@ -174,7 +174,7 @@ public class BowlTest {
         b.play(10);
         
         Assert.assertEquals(0, b.getNeighbour(5).getBeads());
-        int strikeTotal = b.getNeighbour(5).getOpposite().getBeads() + b.getKalaha().getBeads();
+        int strikeTotal = b.getNeighbour(5).getOpposite().getBeads() + b.getKalaha().getBeads() + 1;
         b.play(2); //this is a strike move!
         Assert.assertEquals(strikeTotal, b.getKalaha().getBeads());
         

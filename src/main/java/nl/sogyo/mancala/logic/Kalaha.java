@@ -34,8 +34,7 @@ public class Kalaha extends BeadContainer {
             getNeighbour().transferBeadsOnGameEnd(0);
     }
     
-    @Override
-    public void transferBeadsOnStrike(final int beads) {
+    void transferBeadsOnStrike(final int beads) {
         
         setBeads(getBeads() + beads);
     }

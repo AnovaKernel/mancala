@@ -14,6 +14,7 @@ import java.awt.geom.Ellipse2D;
 public class BoardObject extends Ellipse2D.Double {
     
     private BeadContainer beadContainer;
+    private double        defaultHeight, defaultWidth;
     
     public BoardObject() {}
     
@@ -21,6 +22,8 @@ public class BoardObject extends Ellipse2D.Double {
         
         super(x, y, w, h);
         this.beadContainer = beadContainer;
+        defaultHeight = height;
+        defaultWidth = width;
     }
     
     public void play() {
@@ -31,5 +34,17 @@ public class BoardObject extends Ellipse2D.Double {
     String getScore() {
         
         return "" + beadContainer.getBeads();
+    }
+    
+    void grow() {
+        
+        this.height = defaultHeight * 1.5;
+        this.width = defaultWidth * 1.5;
+    }
+    
+    void defaultSize() {
+        
+        this.height = defaultHeight;
+        this.width = defaultWidth;
     }
 }
