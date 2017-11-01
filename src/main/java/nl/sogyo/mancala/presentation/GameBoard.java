@@ -49,7 +49,7 @@ public class GameBoard extends JPanel {
                 for (BoardObject b : boardObjects) {
                     if (b.contains(e.getPoint())) {
                         (b).play();
-                        //System.out.println(b.getClass().getName());
+                        System.out.println("Click registered");
                         repaint();
                     }
                 }

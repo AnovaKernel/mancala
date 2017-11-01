@@ -187,27 +187,4 @@ public abstract class BeadContainer extends BoardObject {
         System.out.println("You can only play on a Bowl");
     }
     
-    @Override
-    public int hashCode() {
-        
-        int result = super.hashCode();
-        result = 31 * result + beads; //stackoverflow
-        result = 31 * result + owner.hashCode();
-        return result;
-    }
-    
-    @Override
-    public boolean equals(final Object o) {
-    
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
-        if (!super.equals(o))
-            return false;
-    
-        final BeadContainer that = (BeadContainer) o;
-    
-        return beads == that.beads && neighbour.equals(that.neighbour) && owner.equals(that.owner);
-    }
 }

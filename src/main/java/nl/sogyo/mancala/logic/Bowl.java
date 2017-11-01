@@ -73,7 +73,7 @@ public class Bowl extends BeadContainer {
         if (!(endedIn instanceof Kalaha && endedIn.getOwner().isTurn()))
             getOwner().setTurn(); //we did not end in our own kalaha
         else
-            System.out.println("extra turn");
+            System.out.println("Extra turn");
         checkPossibleMovesNextTurn(getOwner());
         
     }
@@ -84,7 +84,7 @@ public class Bowl extends BeadContainer {
         
         if (!movePossible) {
             getOpposite().getKalaha().getNeighbour().transferBeadsOnGameEnd(0);
-            System.out.println("game ended");
+            System.out.println("Game ended");
         }
     }
 }

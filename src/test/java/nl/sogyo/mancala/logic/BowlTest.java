@@ -235,8 +235,6 @@ public class BowlTest {
         
         Assert.assertEquals(b.getOwner().getPlayerResult(), Player.RESULT.LOSE);
         Assert.assertEquals(b.getOwner().getOpponent().getPlayerResult(), Player.RESULT.WIN);
-        
-        System.out.println(b.getOwner().getPlayerResult());
-        //Assert.assertEquals();
+    
     }
 }
