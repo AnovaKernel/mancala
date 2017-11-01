@@ -6,12 +6,12 @@ import nl.sogyo.mancala.presentation.BoardObject;
  * Project: mancala
  * FQCN: nl.sogyo.mancala.logic.BeadContainer
  * <p>
+ *
  * @author kverlaan
  * @since 25-Oct-17
- *
+ * <p>
  * Abstract class to define a contract for the Kalaha and Bowl Objects
  * Extends BoardObject to allow presentation in the GUI
- *
  */
 public abstract class BeadContainer extends BoardObject {
     
@@ -38,6 +38,7 @@ public abstract class BeadContainer extends BoardObject {
     /**
      * transfers all beads that are inside bowls to the corresponding Kalaha
      * is called when no more moves are left
+     *
      * @param beads the beads that are moved
      */
     public void transferBeadsOnGameEnd(int beads) {
@@ -49,6 +50,7 @@ public abstract class BeadContainer extends BoardObject {
     
     /**
      * transfer the beads from a bowl and dispenses them one by one counterclockwise
+     *
      * @param beads the beads in the played bowl
      */
     void transferBeadsOnPlayerMove(int beads) {
@@ -73,6 +75,7 @@ public abstract class BeadContainer extends BoardObject {
     
     /**
      * execute a play move on a bowl
+     *
      * @param i the bowl to be played represented as an int
      */
     void play(int i) {
@@ -85,18 +88,19 @@ public abstract class BeadContainer extends BoardObject {
     
     /**
      * returns the nearest kalaha (counterclockwise) starting the search from the given index
+     *
      * @param i the index where searching starts
      * @return the nearest Kalaha object found
      */
     private Kalaha searchKalaha(int i) {
+    
+        return getNeighbour(i) instanceof Kalaha ? ((Kalaha) getNeighbour(i)) : searchKalaha(++i);
         
-        Kalaha k;
-        k = getNeighbour(i) instanceof Kalaha ? ((Kalaha) getNeighbour(i)) : searchKalaha(++i);
-        return k;
     }
     
     /**
      * returns the owner of the current object
+     *
      * @return Player object representing the owner
      */
     Player getOwner() {
@@ -106,6 +110,7 @@ public abstract class BeadContainer extends BoardObject {
     
     /**
      * returns the beads in the current container
+     *
      * @return integer representing the amount of beads
      */
     public int getBeads() {
@@ -115,6 +120,7 @@ public abstract class BeadContainer extends BoardObject {
     
     /**
      * sets the beads in the current container
+     *
      * @param beads amount of beads
      */
     void setBeads(final int beads) {
@@ -124,6 +130,7 @@ public abstract class BeadContainer extends BoardObject {
     
     /**
      * returns the direct neighbour of the current container
+     *
      * @return BeadContainer representing the direct neighbour
      */
     BeadContainer getNeighbour() {
@@ -133,6 +140,7 @@ public abstract class BeadContainer extends BoardObject {
     
     /**
      * sets the neighbour of the current container
+     *
      * @param neighbour the BeadContainer that should be the current objects neighbour
      */
     void setNeighbour(BeadContainer neighbour) {
@@ -142,6 +150,7 @@ public abstract class BeadContainer extends BoardObject {
     
     /**
      * returns the container directly opposite to the current object
+     *
      * @return BeadContainer opposite to current
      */
     public BeadContainer getOpposite() {
@@ -151,6 +160,7 @@ public abstract class BeadContainer extends BoardObject {
     
     /**
      * returns whether moves are possible
+     *
      * @return boolean representing true if there are moves to play, false if there are no more moves
      */
     public boolean isMovePossible() {
@@ -160,6 +170,7 @@ public abstract class BeadContainer extends BoardObject {
     
     /**
      * returns the nearest Kalaha (counter clockwise) as seen from the current object
+     *
      * @return Kalaha object belonging to
      */
     Kalaha getKalaha() {
@@ -180,27 +191,23 @@ public abstract class BeadContainer extends BoardObject {
     public int hashCode() {
         
         int result = super.hashCode();
-        result = 31 * result + neighbour.hashCode();
+        result = 31 * result + beads; //stackoverflow
         result = 31 * result + owner.hashCode();
         return result;
     }
     
     @Override
     public boolean equals(final Object o) {
-        
+    
         if (this == o)
             return true;
         if (o == null || getClass() != o.getClass())
             return false;
         if (!super.equals(o))
             return false;
-        
+    
         final BeadContainer that = (BeadContainer) o;
-        
-        if (beads != that.beads)
-            return false;
-        if (!neighbour.equals(that.neighbour))
-            return false;
-        return owner.equals(that.owner);
+    
+        return beads == that.beads && neighbour.equals(that.neighbour) && owner.equals(that.owner);
     }
 }

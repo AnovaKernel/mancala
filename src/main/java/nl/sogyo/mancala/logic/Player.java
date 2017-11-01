@@ -9,6 +9,7 @@ package nl.sogyo.mancala.logic;
  */
 public class Player {
     
+    private String  name;
     private boolean turn;
     private Player  opponent;
     private RESULT  playerResult;
@@ -51,11 +52,6 @@ public class Player {
         }
     }
     
-    boolean isTurn() {
-        
-        return turn;
-    }
-    
     private void setPlayerResult(final RESULT result) {
         
         this.playerResult = result;
@@ -67,8 +63,34 @@ public class Player {
         return opponent;
     }
     
+    boolean isTurn() {
+        
+        return turn;
+    }
+    
+    @Override
+    public int hashCode() {
+        
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (turn ? 1 : 0);
+        result = 31 * result + (playerResult != null ? playerResult.hashCode() : 0);
+        return result;
+    }
+    
+    @Override
+    public boolean equals(final Object o) {
+        
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        
+        final Player player = (Player) o;
+        
+        return turn == player.turn && (name != null ? name.equals(player.name) : player.name == null) && playerResult == player.playerResult;
+    }
+    
     public enum RESULT {
         WIN, DRAW, LOSE
     }
-    
 }

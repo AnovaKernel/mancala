@@ -31,11 +31,6 @@ public class BoardObject extends Ellipse2D.Double {
         beadContainer.play();
     }
     
-    String getScore() {
-        
-        return "" + beadContainer.getBeads();
-    }
-    
     void grow() {
         
         this.height = defaultHeight * 1.5;
@@ -46,5 +41,10 @@ public class BoardObject extends Ellipse2D.Double {
         
         this.height = defaultHeight;
         this.width = defaultWidth;
+    }
+    
+    String getScore() {
+        
+        return "" + beadContainer.getBeads();
     }
 }

@@ -21,8 +21,8 @@ public class Bowl extends BeadContainer {
     }
     
     Bowl(BeadContainer bc, int containersCreated, Player owner) {
-        
-        beads = 4;
+    
+        this.beads = 4;
         this.owner = owner;
         this.neighbour = bc;
         
@@ -30,10 +30,9 @@ public class Bowl extends BeadContainer {
             new Kalaha(this, ++containersCreated, owner.getOpponent());
         else if (containersCreated <= 13)
             new Bowl(this, ++containersCreated, owner);
-        else {
-            Bowl b = (Bowl) getNeighbour(13);
-            b.setNeighbour(this);
-        }
+        else
+            getNeighbour(13).setNeighbour(this);
+        
     }
     
     @Override
@@ -45,32 +44,47 @@ public class Bowl extends BeadContainer {
     
     @Override
     public void play() {
-        /*
-         * TODO make this method less messy
-         */
-        if (getOwner().isTurn() && getBeads() > 0) {
-            int beadsInHand = getBeads();
-            setBeads(0);
-            getNeighbour().transferBeadsOnPlayerMove(beadsInHand);
     
-            if (!(getNeighbour(beadsInHand) instanceof Kalaha)) {
-                //if player did not end in kalaha we flip the turn
-                getOwner().setTurn();
-        
-                if (!getKalaha().getNeighbour().isMovePossible()) {
-                    //if opponent has no moves the game ends
-                    getOpposite().getKalaha().getNeighbour().transferBeadsOnGameEnd(0);
-                }
-            } else if (!getNeighbour(beadsInHand).getOwner().isTurn()) {
-                //opponents kalaha doesnt count!
-                getOwner().setTurn();
-            }
+        if (getOwner().isTurn()) {
+            processTurn();
         } else {
-            if (!getOwner().isTurn())
-                System.out.println("Play has been called outside of players turn");
-            else
-                System.out.println("No beads in the bowl");
+            System.out.println("Play has been called outside of players turn");
+        }
+    
+    }
+    
+    private void processTurn() {
+        
+        int beadsInHand = getBeads() > 0 ? getBeads() : 0;
+        
+        if (!(beadsInHand > 0)) {
+            System.out.println("No beads to play here");
+            return;
         }
         
+        setBeads(getBeads() - beadsInHand);
+        getNeighbour().transferBeadsOnPlayerMove(beadsInHand);
+        processEndOfTurn(getNeighbour(beadsInHand));
+        
+    }
+    
+    private void processEndOfTurn(BeadContainer endedIn) {
+        
+        if (!(endedIn instanceof Kalaha && endedIn.getOwner().isTurn()))
+            getOwner().setTurn(); //we did not end in our own kalaha
+        else
+            System.out.println("extra turn");
+        checkPossibleMovesNextTurn(getOwner());
+        
+    }
+    
+    private void checkPossibleMovesNextTurn(Player p) {
+        
+        boolean movePossible = p.isTurn() ? getOpposite().getKalaha().getNeighbour().isMovePossible() : getKalaha().getNeighbour().isMovePossible();
+        
+        if (!movePossible) {
+            getOpposite().getKalaha().getNeighbour().transferBeadsOnGameEnd(0);
+            System.out.println("game ended");
+        }
     }
 }

@@ -10,8 +10,8 @@ package nl.sogyo.mancala.logic;
 public class Kalaha extends BeadContainer {
     
     Kalaha(BeadContainer bc, int containersCreated, Player owner) {
-        
-        beads = 0;
+    
+        this.beads = 0;
         this.owner = owner;
         this.neighbour = bc;
         
@@ -21,6 +21,11 @@ public class Kalaha extends BeadContainer {
             new Bowl(this, ++containersCreated, owner);
         else
             getNeighbour(13).setNeighbour(this);
+    }
+    
+    void transferBeadsOnStrike(final int beads) {
+        
+        setBeads(getBeads() + beads);
     }
     
     @Override
@@ -34,19 +39,15 @@ public class Kalaha extends BeadContainer {
             getNeighbour().transferBeadsOnGameEnd(0);
     }
     
-    void transferBeadsOnStrike(final int beads) {
-        
-        setBeads(getBeads() + beads);
-    }
-    
     @Override
     void transferBeadsOnPlayerMove(int beads) {
-        
-        if (getOwner().isTurn() && beads > 1) {
+    
+        if (getOwner().isTurn()) {
             setBeads(getBeads() + 1);
-            getNeighbour().transferBeadsOnPlayerMove(--beads);
-        } else if (getOwner().isTurn() && beads == 1) {
-            setBeads(getBeads() + 1); //keep your turn
+        
+            if (beads > 1)
+                getNeighbour().transferBeadsOnPlayerMove(--beads);
+            
         } else
             getNeighbour().transferBeadsOnPlayerMove(beads);
         
@@ -67,6 +68,7 @@ public class Kalaha extends BeadContainer {
     
     @Override
     public boolean isMovePossible() {
+    
         return false; //this means the game has ended!
     }
 }

@@ -179,4 +179,64 @@ public class BowlTest {
         
     }
     
+    @Test
+    public void testGameEndsWhenOpponentHasNoMoves() {
+        
+        Bowl b = new Bowl();
+        
+        for (int i = 0 ; i < 14 ; i++)
+            b.getNeighbour(i).setBeads(0);
+        b.setBeads(1);
+        b.getKalaha().setBeads(47);
+        b.play();
+        
+    }
+    
+    @Test
+    public void testZerothNeighbourIsSelf() {
+        
+        Bowl b  = new Bowl();
+        Bowl b2 = (Bowl) b.getNeighbour(0);
+        Assert.assertEquals(b, b2);
+    }
+    
+    @Test
+    public void testHashCode() {
+        
+        Bowl b1 = new Bowl();
+        Bowl b2 = new Bowl();
+        Assert.assertEquals(b1.hashCode(), b2.hashCode());
+        
+    }
+    
+    @Test
+    public void testGameEndsWhenPlayerHasNoMoves() {
+        
+        Bowl b = new Bowl();
+        b.play(1); //p1
+        b.play(8);
+        b.play(2); //p1
+        b.play(3);//p1
+        b.play(8);
+        b.play(4); //p1
+        b.play(8);
+        b.play(6); //p1
+        b.play(8);
+        b.play(5); //p1
+        b.play(8);
+        Assert.assertTrue(b.getOwner().isTurn());
+        b.play(6); //p1 may play again but has no stones
+        
+        Assert.assertTrue(b.getOwner().isTurn());
+        Assert.assertFalse(b.isMovePossible());
+        
+        Assert.assertEquals(6, b.getKalaha().getBeads());
+        Assert.assertEquals(42, b.getKalaha().getNeighbour().getKalaha().getBeads());
+        
+        Assert.assertEquals(b.getOwner().getPlayerResult(), Player.RESULT.LOSE);
+        Assert.assertEquals(b.getOwner().getOpponent().getPlayerResult(), Player.RESULT.WIN);
+        
+        System.out.println(b.getOwner().getPlayerResult());
+        //Assert.assertEquals();
+    }
 }
