@@ -162,7 +162,6 @@ public class BowlTest {
         Assert.assertEquals(6, b.getKalaha().getBeads());
         Assert.assertEquals(0, b.getNeighbour(5).getBeads());
         Assert.assertFalse(b.isMovePossible());
-        System.out.println(b.getBeads());
         
     }
     

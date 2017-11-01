@@ -86,4 +86,17 @@ public class KalahaTest {
         Assert.assertEquals(8, b.getKalaha().getBeads());
         
     }
+    
+    @Test
+    public void testStrikeCantHappenOnKalaha() {
+        
+        Bowl   b  = new Bowl();
+        Kalaha k1 = b.getKalaha();
+        Kalaha k2 = b.getKalaha();
+        
+        Assert.assertEquals(k1, k2);
+        k1.strike();
+        Assert.assertEquals(k1, k2);
+        
+    }
 }

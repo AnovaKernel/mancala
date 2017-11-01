@@ -6,6 +6,8 @@ package nl.sogyo.mancala.logic;
  * <p>
  * Created by kverlaan
  * on 25-Oct-17
+ *
+ * @see nl.sogyo.mancala.logic.BeadContainer
  */
 public class Bowl extends BeadContainer {
     
@@ -44,7 +46,7 @@ public class Bowl extends BeadContainer {
     @Override
     public void play() {
         /*
-         * TODO Fix this method, it is a mess
+         * TODO make this method less messy
          */
         if (getOwner().isTurn() && getBeads() > 0) {
             int beadsInHand = getBeads();

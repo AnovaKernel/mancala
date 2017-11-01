@@ -53,6 +53,13 @@ public class Kalaha extends BeadContainer {
     }
     
     @Override
+    public void strike() {
+        
+        System.out.println("Strike can only be called on a Bowl");
+        
+    }
+    
+    @Override
     public BeadContainer getOpposite() {
     
         return this;
@@ -60,7 +67,6 @@ public class Kalaha extends BeadContainer {
     
     @Override
     public boolean isMovePossible() {
-        //        transferBeadsOnGameEnd();
         return false; //this means the game has ended!
     }
 }
