@@ -80,14 +80,27 @@ public class PlayerTest {
     }
     
     @Test
-    public void testGamePlayerCanWinOrLose() {
-        
+    public void testPlayerCanLose() {
+    
         Bowl b = new Bowl();
         b.play(6);
         b.transferBeadsOnGameEnd(0);
-        
+    
         Assert.assertEquals(Player.RESULT.LOSE, b.getOwner().getPlayerResult());
         Assert.assertEquals(Player.RESULT.WIN, b.getOwner().getOpponent().getPlayerResult());
+    
+    }
+    
+    @Test
+    public void testPlayerCanWin() {
+        
+        Bowl b = new Bowl();
+        b.play(1);
+        b.play(12);
+        b.getKalaha().getNeighbour().transferBeadsOnGameEnd(0);
+        
+        Assert.assertEquals(Player.RESULT.WIN, b.getOwner().getPlayerResult());
+        Assert.assertEquals(Player.RESULT.LOSE, b.getOwner().getOpponent().getPlayerResult());
         
     }
 }

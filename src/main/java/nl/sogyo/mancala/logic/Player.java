@@ -9,7 +9,7 @@ package nl.sogyo.mancala.logic;
  */
 public class Player {
     
-    private String  name;
+    private String  name; //not yet used
     private boolean turn;
     private Player  opponent;
     private RESULT  playerResult;
@@ -39,23 +39,17 @@ public class Player {
     }
     
     void setPlayerResult(final int comparedScore) {
-        
-        if (comparedScore < 0) {
-            playerResult = (RESULT.LOSE);
-            getOpponent().setPlayerResult(RESULT.WIN);
-        } else if (comparedScore > 0) {
-            playerResult = (RESULT.WIN);
-            getOpponent().setPlayerResult(RESULT.LOSE);
-        } else {
-            playerResult = (RESULT.DRAW);
-            getOpponent().setPlayerResult(RESULT.DRAW);
-        }
-    }
     
-    private void setPlayerResult(final RESULT result) {
-        
-        this.playerResult = result;
-        
+        if (playerResult == null) {
+            if (comparedScore < 0) {
+                playerResult = (RESULT.LOSE);
+            } else if (comparedScore > 0) {
+                playerResult = (RESULT.WIN);
+            } else {
+                playerResult = (RESULT.DRAW);
+            }
+            getOpponent().setPlayerResult(comparedScore * -1);
+        }
     }
     
     Player getOpponent() {

@@ -42,15 +42,16 @@ public class Bowl extends BeadContainer {
         setBeads(0);
     }
     
-    @Override
-    public void play() {
-    
-        if (getOwner().isTurn()) {
-            processTurn();
-        } else {
-            System.out.println("Play has been called outside of players turn");
+    private void checkPossibleMovesNextTurn(Player p) {
+        
+        boolean movePossible = p.isTurn() ? getOpposite().getKalaha().getNeighbour().isMovePossible() : getKalaha().getNeighbour().isMovePossible();
+        
+        if (!movePossible) {
+            getOpposite().getKalaha().getNeighbour().transferBeadsOnGameEnd(0);
+            System.out.println("Game ended");
+            System.out.println(getOwner() + "," + getOwner().getPlayerResult().toString());
+            System.out.println(getOwner().getOpponent() + "," + getOwner().getOpponent().getPlayerResult());
         }
-    
     }
     
     private void processTurn() {
@@ -78,13 +79,14 @@ public class Bowl extends BeadContainer {
         
     }
     
-    private void checkPossibleMovesNextTurn(Player p) {
+    @Override
+    public void play() {
         
-        boolean movePossible = p.isTurn() ? getOpposite().getKalaha().getNeighbour().isMovePossible() : getKalaha().getNeighbour().isMovePossible();
-        
-        if (!movePossible) {
-            getOpposite().getKalaha().getNeighbour().transferBeadsOnGameEnd(0);
-            System.out.println("Game ended");
+        if (getOwner().isTurn()) {
+            processTurn();
+        } else {
+            System.out.println("Play has been called outside of players turn");
         }
+        
     }
 }
