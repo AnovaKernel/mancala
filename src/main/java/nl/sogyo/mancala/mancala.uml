@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>nl.sogyo.mancala</OriginalElement>
+  <nodes>
+    <node x="1940.1666666666667" y="316.5">nl.sogyo.mancala.presentation.BoardObject</node>
+    <node x="738.5" y="1372.0">nl.sogyo.mancala.logic.PlayerTest</node>
+    <node x="783.8653846153846" y="0.0">nl.sogyo.mancala.logic.Player</node>
+    <node x="1505.550819088319" y="550.0">nl.sogyo.mancala.logic.BeadContainer</node>
+    <node x="21.5" y="1438.0">nl.sogyo.mancala.Mancala</node>
+    <node x="1266.488319088319" y="306.0">nl.sogyo.mancala.logic.Kalaha</node>
+    <node x="2000.5965349002845" y="1683.0">nl.sogyo.mancala.presentation.GUI</node>
+    <node x="1082.5" y="1382.0">nl.sogyo.mancala.presentation.UI</node>
+    <node x="1320.5" y="1394.0">nl.sogyo.mancala.logic.KalahaTest</node>
+    <node x="1904.5965349002845" y="1403.5">nl.sogyo.mancala.presentation.GameBoard</node>
+    <node x="1035.0" y="1036.0">nl.sogyo.mancala.logic.Bowl</node>
+    <node x="0.0" y="1705.5">nl.sogyo.mancala.MancalaTest</node>
+    <node x="212.5" y="1295.0">nl.sogyo.mancala.logic.BowlTest</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="nl.sogyo.mancala.presentation.BoardObject" target="nl.sogyo.mancala.logic.BeadContainer">
+      <point x="-25.83333333333337" y="71.5" />
+      <point x="2069.3333333333335" y="530.0" />
+      <point x="1999.613319088319" y="530.0" />
+      <point x="230.5625" y="-203.0" />
+    </edge>
+    <edge source="nl.sogyo.mancala.logic.PlayerTest" target="nl.sogyo.mancala.logic.Bowl">
+      <point x="38.0" y="-92.0" />
+      <point x="928.5" y="1265.0" />
+      <point x="1113.0" y="1265.0" />
+      <point x="-6.0" y="59.5" />
+    </edge>
+    <edge source="nl.sogyo.mancala.logic.KalahaTest" target="nl.sogyo.mancala.logic.Kalaha">
+      <point x="89.0" y="-70.0" />
+      <point x="1543.0" y="1275.0" />
+      <point x="1465.050819088319" y="1275.0" />
+      <point x="22.0625" y="82.0" />
+    </edge>
+    <edge source="nl.sogyo.mancala.logic.Player" target="nl.sogyo.mancala.logic.Player">
+      <point x="-79.69230769230768" y="93.0" />
+      <point x="833.6730769230769" y="226.0" />
+      <point x="743.8653846153846" y="226.0" />
+      <point x="743.8653846153846" y="31.0" />
+      <point x="-129.5" y="-62.0" />
+    </edge>
+    <edge source="nl.sogyo.mancala.logic.Kalaha" target="nl.sogyo.mancala.logic.Bowl">
+      <point x="-22.0625" y="82.0" />
+      <point x="1420.925819088319" y="530.0" />
+      <point x="1117.0" y="530.0" />
+      <point x="1117.0" y="1006.0" />
+      <point x="1143.0" y="1006.0" />
+      <point x="24.0" y="-59.5" />
+    </edge>
+    <edge source="nl.sogyo.mancala.presentation.UI" target="nl.sogyo.mancala.logic.Bowl">
+      <point x="54.5" y="-82.0" />
+      <point x="1246.0" y="1275.0" />
+      <point x="1149.0" y="1275.0" />
+      <point x="30.0" y="59.5" />
+    </edge>
+    <edge source="nl.sogyo.mancala.logic.Bowl" target="nl.sogyo.mancala.logic.Kalaha">
+      <point x="-24.0" y="-59.5" />
+      <point x="1095.0" y="510.0" />
+      <point x="1332.675819088319" y="510.0" />
+      <point x="-110.3125" y="82.0" />
+    </edge>
+    <edge source="nl.sogyo.mancala.MancalaTest" target="nl.sogyo.mancala.Mancala">
+      <point x="53.5" y="-26.0" />
+      <point x="160.5" y="1658.0" />
+      <point x="149.75" y="1658.0" />
+      <point x="42.75" y="26.0" />
+    </edge>
+    <edge source="nl.sogyo.mancala.presentation.GUI" target="nl.sogyo.mancala.presentation.GameBoard">
+      <point x="0.0" y="-48.5" />
+      <point x="0.0" y="60.5" />
+    </edge>
+    <edge source="nl.sogyo.mancala.logic.BeadContainer" target="nl.sogyo.mancala.logic.Player">
+      <point x="-32.9375" y="-203.0" />
+      <point x="1736.113319088319" y="530.0" />
+      <point x="1775.7944515669512" y="530.0" />
+      <point x="1775.7944515669512" y="256.0" />
+      <point x="1012.9807692307693" y="256.0" />
+      <point x="99.61538461538467" y="93.0" />
+    </edge>
+    <edge source="nl.sogyo.mancala.logic.Kalaha" target="nl.sogyo.mancala.logic.Kalaha">
+      <point x="-154.4375" y="82.0" />
+      <point x="1288.550819088319" y="490.0" />
+      <point x="1246.488319088319" y="490.0" />
+      <point x="1246.488319088319" y="388.0" />
+      <point x="-176.5" y="-0.0" />
+    </edge>
+    <edge source="nl.sogyo.mancala.logic.Bowl" target="nl.sogyo.mancala.logic.Bowl">
+      <point x="-66.0" y="59.5" />
+      <point x="1053.0" y="1185.0" />
+      <point x="1005.0" y="1185.0" />
+      <point x="1005.0" y="1065.75" />
+      <point x="-84.0" y="-29.75" />
+    </edge>
+    <edge source="nl.sogyo.mancala.presentation.GameBoard" target="nl.sogyo.mancala.logic.Bowl">
+      <point x="-66.6" y="-60.5" />
+      <point x="2004.4965349002846" y="1235.0" />
+      <point x="1197.0" y="1235.0" />
+      <point x="78.0" y="59.5" />
+    </edge>
+    <edge source="nl.sogyo.mancala.logic.BeadContainer" target="nl.sogyo.mancala.logic.Kalaha">
+      <point x="-230.5625" y="-203.0" />
+      <point x="1538.488319088319" y="530.0" />
+      <point x="1509.175819088319" y="530.0" />
+      <point x="66.1875" y="82.0" />
+    </edge>
+    <edge source="nl.sogyo.mancala.logic.Kalaha" target="nl.sogyo.mancala.logic.Player">
+      <point x="0.0" y="-82.0" />
+      <point x="1442.988319088319" y="266.0" />
+      <point x="993.0576923076924" y="266.0" />
+      <point x="79.69230769230774" y="93.0" />
+    </edge>
+    <edge source="nl.sogyo.mancala.logic.BowlTest" target="nl.sogyo.mancala.logic.Player">
+      <point x="-168.66666666666663" y="-169.0" />
+      <point x="296.83333333333337" y="1215.0" />
+      <point x="435.7678846153842" y="1215.0" />
+      <point x="435.7678846153842" y="266.0" />
+      <point x="893.4423076923077" y="266.0" />
+      <point x="-19.923076923076934" y="93.0" />
+    </edge>
+    <edge source="nl.sogyo.mancala.logic.BeadContainer" target="nl.sogyo.mancala.logic.BeadContainer">
+      <point x="-197.625" y="203.0" />
+      <point x="1571.425819088319" y="976.0" />
+      <point x="1485.550819088319" y="976.0" />
+      <point x="1485.550819088319" y="854.5" />
+      <point x="-263.5" y="101.5" />
+    </edge>
+    <edge source="nl.sogyo.mancala.logic.Kalaha" target="nl.sogyo.mancala.logic.BeadContainer">
+      <point x="110.3125" y="82.0" />
+      <point x="1553.300819088319" y="530.0" />
+      <point x="1604.363319088319" y="530.0" />
+      <point x="-164.6875" y="-203.0" />
+    </edge>
+    <edge source="nl.sogyo.mancala.logic.BeadContainer" target="nl.sogyo.mancala.presentation.BoardObject">
+      <point x="98.8125" y="-203.0" />
+      <point x="1867.863319088319" y="510.0" />
+      <point x="1966.0" y="510.0" />
+      <point x="-129.16666666666666" y="71.5" />
+    </edge>
+    <edge source="nl.sogyo.mancala.logic.Bowl" target="nl.sogyo.mancala.logic.Player">
+      <point x="-72.0" y="-59.5" />
+      <point x="1047.0" y="1006.0" />
+      <point x="1073.0" y="1006.0" />
+      <point x="1073.0" y="286.0" />
+      <point x="953.2115384615386" y="286.0" />
+      <point x="39.84615384615387" y="93.0" />
+    </edge>
+    <edge source="nl.sogyo.mancala.logic.Bowl" target="nl.sogyo.mancala.logic.BeadContainer">
+      <point x="48.0" y="-59.5" />
+      <point x="1167.0" y="1006.0" />
+      <point x="1834.925819088319" y="1006.0" />
+      <point x="65.875" y="203.0" />
+    </edge>
+    <edge source="nl.sogyo.mancala.logic.KalahaTest" target="nl.sogyo.mancala.logic.Bowl">
+      <point x="0.0" y="-70.0" />
+      <point x="1454.0" y="1255.0" />
+      <point x="1173.0" y="1255.0" />
+      <point x="54.0" y="59.5" />
+    </edge>
+    <edge source="nl.sogyo.mancala.presentation.GUI" target="nl.sogyo.mancala.presentation.GUI">
+      <point x="0.0" y="48.5" />
+      <point x="2071.0965349002845" y="1800.0" />
+      <point x="1980.5965349002845" y="1800.0" />
+      <point x="1980.5965349002845" y="1731.5" />
+      <point x="-70.5" y="-0.0" />
+    </edge>
+    <edge source="nl.sogyo.mancala.Mancala" target="nl.sogyo.mancala.logic.Player">
+      <point x="-64.125" y="-26.0" />
+      <point x="42.875" y="1275.0" />
+      <point x="58.75" y="1275.0" />
+      <point x="58.75" y="246.0" />
+      <point x="853.5961538461538" y="246.0" />
+      <point x="-59.769230769230774" y="93.0" />
+    </edge>
+    <edge source="nl.sogyo.mancala.presentation.UI" target="nl.sogyo.mancala.presentation.UI">
+      <point x="0.0" y="82.0" />
+      <point x="1191.5" y="1566.0" />
+      <point x="1062.5" y="1566.0" />
+      <point x="1062.5" y="1464.0" />
+      <point x="-109.0" y="-0.0" />
+    </edge>
+    <edge source="nl.sogyo.mancala.logic.PlayerTest" target="nl.sogyo.mancala.logic.Player">
+      <point x="-114.0" y="-92.0" />
+      <point x="776.5" y="1215.0" />
+      <point x="767.5444515669512" y="1215.0" />
+      <point x="767.5444515669512" y="276.0" />
+      <point x="913.3653846153846" y="276.0" />
+      <point x="0.0" y="93.0" />
+    </edge>
+    <edge source="nl.sogyo.mancala.logic.BowlTest" target="nl.sogyo.mancala.logic.Bowl">
+      <point x="168.66666666666674" y="-169.0" />
+      <point x="634.1666666666667" y="1255.0" />
+      <point x="1101.0" y="1255.0" />
+      <point x="-18.0" y="59.5" />
+    </edge>
+    <edge source="nl.sogyo.mancala.presentation.GameBoard" target="nl.sogyo.mancala.presentation.BoardObject">
+      <point x="66.59999999999991" y="-60.5" />
+      <point x="2137.6965349002844" y="1275.0" />
+      <point x="2132.0" y="1275.0" />
+      <point x="2132.0" y="520.0" />
+      <point x="2172.666666666667" y="520.0" />
+      <point x="77.5" y="71.5" />
+    </edge>
+    <edge source="nl.sogyo.mancala.Mancala" target="nl.sogyo.mancala.logic.Bowl">
+      <point x="64.125" y="-26.0" />
+      <point x="171.125" y="1235.0" />
+      <point x="1077.0" y="1235.0" />
+      <point x="-42.0" y="59.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.40000000000000013" x="1453.7499999999993" y="841.4999999999995" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class GameBoard extends JPanel {
     
     private final ArrayList<BoardObject> boardObjects;
-    private Dimension   dim    = new Dimension(400, 400);
+    private Dimension   dim    = new Dimension(800, 800);
     private BasicStroke stroke = new BasicStroke(10);
     
     GameBoard() {
